@@ -3,14 +3,14 @@ import { Cpu, Linkedin, Twitter, Facebook, Instagram, Mail, Phone, MapPin } from
 import { NavigationProps } from '../types';
 
 const Footer: React.FC<NavigationProps> = ({ onNavigate }) => (
-  <footer className="bg-navy-950 pt-20 pb-10 border-t border-white/5 text-white">
+  <footer className="bg-beige pt-20 pb-10 border-t border-gray-200 text-navy-900">
     <div className="container mx-auto px-6">
       <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
         
         {/* Brand & Socials */}
         <div className="space-y-6">
           <div className="flex items-center gap-2 font-display font-bold text-xl">
-             <div className="w-6 h-6 bg-gradient-to-tr from-primary to-yellow-400 rounded-md flex items-center justify-center text-white">
+             <div className="w-6 h-6 bg-primary rounded-md flex items-center justify-center text-white">
                 <Cpu size={14} />
              </div>
              Sunai
@@ -29,19 +29,21 @@ const Footer: React.FC<NavigationProps> = ({ onNavigate }) => (
         {/* Navigation */}
         <div>
           <h4 className="font-bold mb-6 text-sm uppercase tracking-wider text-gray-400">Company</h4>
-          <ul className="space-y-3 text-sm text-gray-500">
+          <ul className="space-y-3 text-sm text-gray-600">
             <li><button onClick={() => onNavigate('home')} className="hover:text-primary transition-colors">Home</button></li>
+            <li><button onClick={() => onNavigate('about')} className="hover:text-primary transition-colors">About Us</button></li>
             <li><button onClick={() => onNavigate('services')} className="hover:text-primary transition-colors">Services</button></li>
+            <li><button onClick={() => onNavigate('ai-features')} className="hover:text-primary transition-colors">AI Features</button></li>
+            <li><button onClick={() => onNavigate('whatsapp')} className="hover:text-primary transition-colors">WhatsApp Automation</button></li>
             <li><button onClick={() => onNavigate('projects')} className="hover:text-primary transition-colors">Projects</button></li>
-            <li><button onClick={() => onNavigate('process')} className="hover:text-primary transition-colors">Process</button></li>
-            <li><button onClick={() => onNavigate('home', 'contact')} className="hover:text-primary transition-colors">Contact</button></li>
+            <li><button onClick={() => onNavigate('contact')} className="hover:text-primary transition-colors">Contact</button></li>
           </ul>
         </div>
 
         {/* Contact Info */}
         <div>
           <h4 className="font-bold mb-6 text-sm uppercase tracking-wider text-gray-400">Contact</h4>
-          <ul className="space-y-4 text-sm text-gray-500">
+          <ul className="space-y-4 text-sm text-gray-600">
             <li className="flex items-start gap-3">
               <Mail size={16} className="text-primary mt-1" />
               <span>hello@sunai.ai</span>
@@ -65,20 +67,20 @@ const Footer: React.FC<NavigationProps> = ({ onNavigate }) => (
             <input 
               type="email" 
               placeholder="Enter your email" 
-              className="bg-white/5 border border-white/10 rounded-lg px-4 py-2.5 text-sm text-white focus:outline-none focus:border-primary transition-colors"
+              className="bg-white border border-gray-200 rounded-md px-4 py-2.5 text-sm text-navy-900 focus:outline-none focus:border-primary transition-colors"
             />
-            <button className="bg-primary hover:bg-primary-hover text-white font-bold py-2.5 rounded-lg text-sm transition-colors">
+            <button className="bg-primary hover:bg-primary-hover text-white font-bold py-2.5 rounded-md text-sm transition-colors">
               Subscribe
             </button>
           </div>
         </div>
       </div>
 
-      <div className="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-gray-600">
+      <div className="border-t border-gray-200 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-gray-500">
         <div>&copy; 2025 Sunai — All Rights Reserved</div>
         <div className="flex gap-6 mt-4 md:mt-0">
-          <button className="hover:text-white transition-colors">Privacy Policy</button>
-          <button className="hover:text-white transition-colors">Terms of Service</button>
+          <button className="hover:text-primary transition-colors">Privacy Policy</button>
+          <button className="hover:text-primary transition-colors">Terms of Service</button>
         </div>
       </div>
     </div>

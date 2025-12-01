@@ -6,6 +6,10 @@ import Home from './pages/Home';
 import Services from './pages/Services';
 import Process from './pages/Process';
 import Projects from './pages/Projects';
+import WhatsApp from './pages/WhatsApp';
+import AIFeatures from './pages/AIFeatures';
+import About from './pages/About';
+import Contact from './pages/Contact';
 import { PageName } from './types';
 
 const App = () => {
@@ -22,6 +26,14 @@ const App = () => {
         setCurrentPage('process');
       } else if (hash === 'projects') {
         setCurrentPage('projects');
+      } else if (hash === 'whatsapp') {
+        setCurrentPage('whatsapp');
+      } else if (hash === 'ai-features') {
+        setCurrentPage('ai-features');
+      } else if (hash === 'about') {
+        setCurrentPage('about');
+      } else if (hash === 'contact') {
+        setCurrentPage('contact');
       } else {
         // If hash is a section on home (e.g., #results), stay on home but scroll
         if (!['results', 'pricing'].includes(hash)) {
@@ -61,6 +73,10 @@ const App = () => {
         {currentPage === 'services' && <Services onOpenConsultation={() => setBriefOpen(true)} />}
         {currentPage === 'projects' && <Projects onOpenConsultation={() => setBriefOpen(true)} />}
         {currentPage === 'process' && <Process onOpenBrief={() => setBriefOpen(true)} />}
+        {currentPage === 'whatsapp' && <WhatsApp onOpenConsultation={() => setBriefOpen(true)} />}
+        {currentPage === 'ai-features' && <AIFeatures onOpenConsultation={() => setBriefOpen(true)} />}
+        {currentPage === 'about' && <About onOpenConsultation={() => setBriefOpen(true)} />}
+        {currentPage === 'contact' && <Contact />}
       </main>
 
       <Footer onNavigate={handleNavigate} />

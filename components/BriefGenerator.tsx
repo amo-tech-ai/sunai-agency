@@ -29,14 +29,14 @@ const BriefGenerator: React.FC<BriefGeneratorProps> = ({ isOpen, onClose }) => {
             initial={{ opacity: 0 }} 
             animate={{ opacity: 1 }} 
             exit={{ opacity: 0 }}
-            className="absolute inset-0 bg-navy-900/40 backdrop-blur-sm"
+            className="absolute inset-0 bg-navy-900/10 backdrop-blur-sm"
             onClick={onClose}
           />
           <motion.div
             initial={{ opacity: 0, scale: 0.95, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
-            className="relative w-full max-w-2xl bg-white border border-gray-100 rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[85vh]"
+            className="relative w-full max-w-2xl bg-white border border-gray-200 rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[85vh]"
           >
             {/* Header */}
             <div className="p-6 border-b border-gray-100 flex justify-between items-center bg-gray-50/50">
@@ -77,7 +77,7 @@ const BriefGenerator: React.FC<BriefGeneratorProps> = ({ isOpen, onClose }) => {
                         flex items-center gap-2 px-6 py-3 rounded-full font-bold transition-all
                         ${loading || !idea.trim() 
                           ? 'bg-gray-200 text-gray-400 cursor-not-allowed' 
-                          : 'bg-primary text-white hover:bg-primary-hover shadow-[0_4px_15px_rgba(255,122,26,0.3)]'}
+                          : 'bg-primary text-navy-900 hover:bg-primary-hover shadow-[0_4px_15px_rgba(247,168,129,0.3)]'}
                       `}
                     >
                       {loading ? <Loader2 className="animate-spin" size={18} /> : <Sparkles size={18} />}
@@ -101,7 +101,7 @@ const BriefGenerator: React.FC<BriefGeneratorProps> = ({ isOpen, onClose }) => {
                     </button>
                     <button 
                         onClick={onClose}
-                        className="flex items-center gap-2 px-6 py-3 bg-navy-900 text-white rounded-full font-bold hover:bg-navy-800 transition-all shadow-lg"
+                        className="flex items-center gap-2 px-6 py-3 bg-navy-900 text-white rounded-full font-bold hover:bg-navy-700 transition-all shadow-lg"
                     >
                       Use This Brief <ArrowRight size={18} />
                     </button>

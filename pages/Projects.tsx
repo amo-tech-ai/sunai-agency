@@ -21,7 +21,7 @@ const SUCCESS_STORIES = [
       { label: "Return Rate", value: "-22%" },
       { label: "Conversion", value: "+18%" }
     ],
-    image: "bg-orange-50",
+    image: "bg-white",
     icon: ShoppingBag
   },
   {
@@ -34,7 +34,7 @@ const SUCCESS_STORIES = [
       { label: "Response Time", value: "<2s" },
       { label: "Sales Leads", value: "+35%" }
     ],
-    image: "bg-blue-50",
+    image: "bg-white",
     icon: Zap
   },
   {
@@ -47,7 +47,7 @@ const SUCCESS_STORIES = [
       { label: "Accuracy", value: "99.9%" },
       { label: "Hours Saved", value: "400/mo" }
     ],
-    image: "bg-green-50",
+    image: "bg-white",
     icon: ShieldCheck
   }
 ];
@@ -89,8 +89,7 @@ const Projects: React.FC<ProjectsProps> = ({ onOpenConsultation }) => {
   return (
     <div className="bg-white">
       {/* 1. Hero Section */}
-      <section className="relative pt-32 pb-24 overflow-hidden bg-gradient-to-br from-white via-gray-50 to-blue-50/30">
-        <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-primary/5 to-transparent" />
+      <section className="relative pt-32 pb-24 overflow-hidden bg-beige">
         <div className="container mx-auto px-6 relative z-10 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -109,11 +108,11 @@ const Projects: React.FC<ProjectsProps> = ({ onOpenConsultation }) => {
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <button 
                 onClick={onOpenConsultation}
-                className="px-8 py-4 bg-primary text-white text-lg font-bold rounded-full shadow-lg hover:bg-primary-hover hover:scale-105 transition-all"
+                className="px-8 py-4 bg-primary text-white text-lg font-bold rounded-md shadow-lg hover:bg-primary-hover transition-all"
               >
                 Start Your Project
               </button>
-              <button className="px-8 py-4 bg-white text-navy-900 border border-gray-200 text-lg font-bold rounded-full hover:bg-gray-50 transition-all">
+              <button className="px-8 py-4 bg-white text-navy-900 border border-gray-200 text-lg font-bold rounded-md hover:bg-white/80 transition-all">
                 See Success Stories
               </button>
             </div>
@@ -137,12 +136,11 @@ const Projects: React.FC<ProjectsProps> = ({ onOpenConsultation }) => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="group bg-white rounded-2xl border border-gray-100 shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all overflow-hidden"
+                className="group bg-white rounded-lg border border-gray-200 shadow-card hover:shadow-card-hover hover:-translate-y-1 transition-all overflow-hidden"
               >
-                <div className={`h-48 ${story.image} flex items-center justify-center relative overflow-hidden`}>
-                  <div className="absolute inset-0 bg-navy-900/5 group-hover:bg-navy-900/0 transition-colors" />
-                  <story.icon size={64} className="text-navy-900/10 group-hover:scale-110 transition-transform duration-500" />
-                  <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-bold text-navy-900 uppercase tracking-wide">
+                <div className={`h-48 bg-beige flex items-center justify-center relative overflow-hidden`}>
+                  <story.icon size={64} className="text-primary/20 group-hover:scale-110 transition-transform duration-500" />
+                  <div className="absolute top-4 left-4 bg-white px-3 py-1 rounded-full text-xs font-bold text-navy-900 uppercase tracking-wide border border-gray-100">
                     {story.industry}
                   </div>
                 </div>
@@ -159,7 +157,7 @@ const Projects: React.FC<ProjectsProps> = ({ onOpenConsultation }) => {
                     </div>
                   </div>
                   
-                  <div className="flex gap-4 mb-8 pt-6 border-t border-gray-50">
+                  <div className="flex gap-4 mb-8 pt-6 border-t border-gray-100">
                     {story.metrics.map((m, idx) => (
                       <div key={idx} className="flex-1">
                         <div className="text-xl font-bold text-primary">{m.value}</div>
@@ -168,7 +166,7 @@ const Projects: React.FC<ProjectsProps> = ({ onOpenConsultation }) => {
                     ))}
                   </div>
 
-                  <button className="w-full py-3 border border-navy-900 text-navy-900 font-bold rounded-lg hover:bg-navy-900 hover:text-white transition-all flex items-center justify-center gap-2">
+                  <button className="w-full py-3 border border-gray-200 text-navy-900 font-bold rounded-md hover:bg-navy-900 hover:text-white transition-all flex items-center justify-center gap-2">
                     View Case Study <ArrowRight size={16} />
                   </button>
                 </div>
@@ -179,13 +177,13 @@ const Projects: React.FC<ProjectsProps> = ({ onOpenConsultation }) => {
       </section>
 
       {/* 3. Project Timeline Calculator */}
-      <section className="py-24 bg-gray-50">
+      <section className="py-24 bg-beige">
         <div className="container mx-auto px-6">
-          <div className="max-w-4xl mx-auto bg-white rounded-3xl shadow-xl overflow-hidden flex flex-col md:flex-row">
-            <div className="bg-navy-900 p-10 text-white md:w-1/3 flex flex-col justify-center">
+          <div className="max-w-4xl mx-auto bg-white rounded-lg shadow-card overflow-hidden flex flex-col md:flex-row border border-gray-200">
+            <div className="bg-beige p-10 text-navy-900 md:w-1/3 flex flex-col justify-center">
               <Calendar className="text-primary mb-6" size={48} />
               <h2 className="text-2xl font-bold mb-4">Calculate Your Project Timeline</h2>
-              <p className="text-gray-400 text-sm leading-relaxed">
+              <p className="text-gray-500 text-sm leading-relaxed">
                 Get a customized project timeline based on your specific needs and industry requirements.
               </p>
             </div>
@@ -196,7 +194,7 @@ const Projects: React.FC<ProjectsProps> = ({ onOpenConsultation }) => {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
                       <label className="block text-sm font-bold text-navy-900 mb-2">Industry</label>
-                      <select className="w-full p-3 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary outline-none text-sm">
+                      <select className="w-full p-3 bg-gray-50 border border-gray-200 rounded-md focus:ring-2 focus:ring-primary outline-none text-sm">
                         <option>E-commerce</option>
                         <option>Healthcare</option>
                         <option>Finance</option>
@@ -205,7 +203,7 @@ const Projects: React.FC<ProjectsProps> = ({ onOpenConsultation }) => {
                     </div>
                     <div>
                       <label className="block text-sm font-bold text-navy-900 mb-2">Project Size</label>
-                      <select className="w-full p-3 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary outline-none text-sm">
+                      <select className="w-full p-3 bg-gray-50 border border-gray-200 rounded-md focus:ring-2 focus:ring-primary outline-none text-sm">
                         <option>MVP (Core Features)</option>
                         <option>Scale-Up</option>
                         <option>Enterprise</option>
@@ -216,14 +214,14 @@ const Projects: React.FC<ProjectsProps> = ({ onOpenConsultation }) => {
                     <label className="block text-sm font-bold text-navy-900 mb-2">Primary Goal</label>
                     <div className="grid grid-cols-2 gap-3">
                       {['Automation', 'Customer Experience', 'Data Insights', 'New Product'].map((goal) => (
-                        <label key={goal} className="flex items-center gap-2 p-3 border border-gray-200 rounded-lg cursor-pointer hover:border-primary transition-colors">
+                        <label key={goal} className="flex items-center gap-2 p-3 border border-gray-200 rounded-md cursor-pointer hover:border-primary transition-colors">
                           <input type="radio" name="goal" className="text-primary focus:ring-primary" />
                           <span className="text-sm text-gray-600">{goal}</span>
                         </label>
                       ))}
                     </div>
                   </div>
-                  <button type="submit" className="w-full py-4 bg-primary text-white font-bold rounded-xl hover:bg-primary-hover shadow-lg transition-all mt-4">
+                  <button type="submit" className="w-full py-4 bg-primary text-white font-bold rounded-md hover:bg-primary-hover shadow-lg transition-all mt-4">
                     Calculate Timeline
                   </button>
                 </form>
@@ -255,7 +253,7 @@ const Projects: React.FC<ProjectsProps> = ({ onOpenConsultation }) => {
                         Recalculate
                       </button>
                       
-                      <button onClick={onOpenConsultation} className="px-8 py-3 bg-navy-900 text-white font-bold rounded-full hover:bg-navy-800 transition-all">
+                      <button onClick={onOpenConsultation} className="px-8 py-3 bg-navy-900 text-white font-bold rounded-md hover:bg-navy-800 transition-all">
                         Start Your Project
                       </button>
                     </motion.div>
@@ -284,7 +282,7 @@ const Projects: React.FC<ProjectsProps> = ({ onOpenConsultation }) => {
                   "Focus on Core Value (MVP)"
                 ].map((item, i) => (
                   <li key={i} className="flex items-center gap-3">
-                    <div className="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center text-green-600">
+                    <div className="w-6 h-6 rounded-full bg-beige flex items-center justify-center text-primary">
                       <CheckCircle2 size={14} />
                     </div>
                     <span className="font-medium text-navy-900">{item}</span>
@@ -296,7 +294,7 @@ const Projects: React.FC<ProjectsProps> = ({ onOpenConsultation }) => {
               </button>
             </div>
 
-            <div className="bg-gray-50 rounded-3xl p-8 border border-gray-100">
+            <div className="bg-beige rounded-lg p-8 border border-gray-200">
               <div className="space-y-8">
                 {/* Comparison Bar 1 */}
                 <div>
@@ -304,9 +302,9 @@ const Projects: React.FC<ProjectsProps> = ({ onOpenConsultation }) => {
                     <span className="text-navy-900">Time to Market</span>
                     <span className="text-green-600">4x Faster</span>
                   </div>
-                  <div className="h-12 bg-white rounded-lg flex overflow-hidden border border-gray-200">
+                  <div className="h-12 bg-white rounded-md flex overflow-hidden border border-gray-200">
                     <div className="w-[25%] bg-primary flex items-center justify-center text-white text-xs font-bold">8 Wks</div>
-                    <div className="w-[75%] bg-gray-200 flex items-center justify-center text-gray-500 text-xs font-bold">Industry Avg (32 Wks)</div>
+                    <div className="w-[75%] bg-gray-100 flex items-center justify-center text-gray-500 text-xs font-bold">Industry Avg (32 Wks)</div>
                   </div>
                 </div>
 
@@ -316,9 +314,9 @@ const Projects: React.FC<ProjectsProps> = ({ onOpenConsultation }) => {
                     <span className="text-navy-900">Development Cost</span>
                     <span className="text-green-600">60% Savings</span>
                   </div>
-                  <div className="h-12 bg-white rounded-lg flex overflow-hidden border border-gray-200">
+                  <div className="h-12 bg-white rounded-md flex overflow-hidden border border-gray-200">
                      <div className="w-[40%] bg-navy-900 flex items-center justify-center text-white text-xs font-bold">Sunai</div>
-                     <div className="w-[60%] bg-gray-200 flex items-center justify-center text-gray-500 text-xs font-bold">Traditional Agency</div>
+                     <div className="w-[60%] bg-gray-100 flex items-center justify-center text-gray-500 text-xs font-bold">Traditional Agency</div>
                   </div>
                 </div>
 
@@ -339,10 +337,10 @@ const Projects: React.FC<ProjectsProps> = ({ onOpenConsultation }) => {
       </section>
 
       {/* 5. Proven Track Record */}
-      <section className="py-24 bg-navy-900 text-white">
+      <section className="py-24 bg-beige border-t border-gray-200">
         <div className="container mx-auto px-6 text-center">
-          <h2 className="text-3xl md:text-4xl font-display font-bold mb-4">Proven Track Record</h2>
-          <p className="text-gray-400 max-w-2xl mx-auto mb-16">
+          <h2 className="text-3xl md:text-4xl font-display font-bold mb-4 text-navy-900">Proven Track Record</h2>
+          <p className="text-gray-600 max-w-2xl mx-auto mb-16">
             Our AI solutions deliver measurable results for companies of all sizes.
           </p>
           
@@ -356,28 +354,28 @@ const Projects: React.FC<ProjectsProps> = ({ onOpenConsultation }) => {
                  <div className="relative w-32 h-32 flex items-center justify-center mb-6">
                     {/* SVG Circular Progress */}
                     <svg className="w-full h-full transform -rotate-90">
-                       <circle cx="64" cy="64" r="58" stroke="currentColor" strokeWidth="8" fill="transparent" className="text-navy-800" />
+                       <circle cx="64" cy="64" r="58" stroke="currentColor" strokeWidth="8" fill="transparent" className="text-gray-200" />
                        <circle cx="64" cy="64" r="58" stroke="currentColor" strokeWidth="8" fill="transparent" strokeDasharray="360" strokeDashoffset="40" className="text-primary" />
                     </svg>
                     <div className="absolute inset-0 flex items-center justify-center flex-col">
                        <metric.icon size={24} className="text-gray-400 mb-1" />
                     </div>
                  </div>
-                 <h3 className="text-4xl font-bold mb-2">{metric.value}</h3>
-                 <p className="text-gray-400 text-sm uppercase tracking-widest">{metric.label}</p>
+                 <h3 className="text-4xl font-bold mb-2 text-navy-900">{metric.value}</h3>
+                 <p className="text-gray-500 text-sm uppercase tracking-widest">{metric.label}</p>
               </div>
             ))}
           </div>
 
-          <div className="pt-12 border-t border-white/10">
+          <div className="pt-12 border-t border-gray-200">
              <p className="text-gray-500 text-sm mb-8">TRUSTED BY INNOVATIVE TEAMS</p>
              <div className="flex flex-wrap justify-center gap-8 md:gap-16 opacity-50 grayscale hover:grayscale-0 transition-all duration-500">
                 {["FashionOS", "AutoMax", "MediSecure", "TechFlow", "LogiStream"].map((logo, i) => (
-                   <span key={i} className="text-xl font-display font-bold text-white hover:text-primary transition-colors cursor-default">{logo}</span>
+                   <span key={i} className="text-xl font-display font-bold text-navy-900 hover:text-primary transition-colors cursor-default">{logo}</span>
                 ))}
              </div>
              <div className="mt-12">
-               <button onClick={() => {}} className="text-white border-b border-primary pb-1 hover:text-primary transition-colors">
+               <button onClick={() => {}} className="text-navy-900 border-b border-primary pb-1 hover:text-primary transition-colors font-medium">
                   See Full Portfolio
                </button>
              </div>
@@ -395,7 +393,7 @@ const Projects: React.FC<ProjectsProps> = ({ onOpenConsultation }) => {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
              {TESTIMONIALS.map((t, i) => (
-                <div key={i} className="bg-gray-50 p-8 rounded-2xl relative">
+                <div key={i} className="bg-beige p-8 rounded-lg relative border border-gray-200">
                    <Quote className="text-primary/20 absolute top-6 right-6" size={40} />
                    <p className="text-navy-900 font-medium leading-relaxed mb-8 relative z-10">"{t.quote}"</p>
                    <div className="flex items-center gap-4">
@@ -413,7 +411,7 @@ const Projects: React.FC<ProjectsProps> = ({ onOpenConsultation }) => {
           </div>
           
           <div className="text-center mt-12">
-             <button className="px-6 py-3 border border-gray-200 rounded-full text-navy-900 font-bold hover:bg-gray-50 transition-all">
+             <button className="px-6 py-3 border border-gray-200 rounded-md text-navy-900 font-bold hover:bg-beige transition-all">
                 Read More Testimonials
              </button>
           </div>
@@ -421,8 +419,8 @@ const Projects: React.FC<ProjectsProps> = ({ onOpenConsultation }) => {
       </section>
 
       {/* 7. CTA Section */}
-      <section className="py-24 relative overflow-hidden bg-gradient-to-br from-primary/10 via-white to-blue-50">
-         <div className="container mx-auto px-6 text-center relative z-10">
+      <section className="py-24 bg-beige text-center">
+         <div className="container mx-auto px-6">
             <h2 className="text-4xl md:text-5xl font-display font-extrabold text-navy-900 mb-6">Ready to Launch Your AI Solution?</h2>
             <p className="text-xl text-gray-600 mb-10 max-w-2xl mx-auto">
                Transform your business in just 8 weeks. Let's turn your vision into reality.
@@ -430,11 +428,11 @@ const Projects: React.FC<ProjectsProps> = ({ onOpenConsultation }) => {
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                <button 
                  onClick={onOpenConsultation}
-                 className="px-10 py-5 bg-primary text-white text-xl font-bold rounded-full shadow-xl hover:bg-primary-hover hover:scale-105 transition-all"
+                 className="px-10 py-5 bg-primary text-white text-xl font-bold rounded-md shadow-lg hover:bg-primary-hover transition-all"
                >
                  Start Your 8-Week Journey
                </button>
-               <button className="px-10 py-5 bg-white text-navy-900 border border-gray-200 text-xl font-bold rounded-full hover:bg-gray-50 transition-all">
+               <button className="px-10 py-5 bg-white text-navy-900 border border-gray-200 text-xl font-bold rounded-md hover:bg-white/80 transition-all">
                  Contact Us
                </button>
             </div>

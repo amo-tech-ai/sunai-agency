@@ -28,7 +28,7 @@ export interface PricingTier {
   recommended?: boolean;
 }
 
-export type PageName = 'home' | 'services' | 'process' | 'projects';
+export type PageName = 'home' | 'services' | 'process' | 'projects' | 'whatsapp' | 'ai-features' | 'about' | 'contact';
 
 export interface NavigationProps {
   onNavigate: (page: PageName, hash?: string) => void;

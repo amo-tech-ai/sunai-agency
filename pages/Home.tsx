@@ -22,7 +22,7 @@ const SOLUTIONS = [
     title: "Custom AI Applications", 
     description: "Tailor-made AI software built to solve your specific business challenges.", 
     icon: Code2, 
-    color: "text-blue-600" 
+    color: "text-primary" 
   },
   { 
     title: "AI Automation", 
@@ -34,13 +34,13 @@ const SOLUTIONS = [
     title: "Machine Learning Integration", 
     description: "Embed predictive models into your existing software ecosystem.", 
     icon: Brain, 
-    color: "text-purple-600" 
+    color: "text-primary" 
   },
   { 
     title: "Predictive Analytics", 
     description: "Turn historical data into future insights with advanced forecasting.", 
     icon: PieChart, 
-    color: "text-green-600" 
+    color: "text-primary" 
   }
 ];
 
@@ -63,28 +63,28 @@ const CASE_STUDIES = [
     id: 1, 
     title: "Smart Inventory System", 
     category: "Retail", 
-    image: "bg-blue-100", 
+    image: "bg-white", 
     desc: "Reduced stockouts by 45% using predictive AI models." 
   },
   { 
     id: 2, 
     title: "FinTech Fraud Guard", 
     category: "Finance", 
-    image: "bg-green-100", 
+    image: "bg-white", 
     desc: "Real-time anomaly detection saving $2M annually." 
   },
   { 
     id: 3, 
     title: "Patient Triage Bot", 
     category: "Healthcare", 
-    image: "bg-purple-100", 
+    image: "bg-white", 
     desc: "Automated symptom analysis reducing wait times by 30%." 
   },
   { 
     id: 4, 
     title: "Dynamic Pricing Engine", 
     category: "E-commerce", 
-    image: "bg-orange-100", 
+    image: "bg-white", 
     desc: "AI-driven pricing adjustments increasing margin by 12%." 
   },
 ];
@@ -115,8 +115,6 @@ const TESTIMONIALS = [
 
 const TECH_STACK = ["CopilotKit", "LangChain", "Supabase", "OpenAI", "Vercel", "Tailwind", "React", "Gemini", "Pinecone"];
 
-// --- Helper Components ---
-
 const SparklesIcon = () => (
   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-primary">
     <path d="M12 2L14.4 9.6L22 12L14.4 14.4L12 22L9.6 14.4L2 12L9.6 9.6L12 2Z" fill="currentColor"/>
@@ -124,17 +122,11 @@ const SparklesIcon = () => (
 );
 
 const Home: React.FC<HomeProps> = ({ onOpenBrief, onNavigate }) => {
-  // State for Dashboard Demo
   const [sliderValue, setSliderValue] = useState(50);
   const [dashboardData, setDashboardData] = useState<any[]>([]);
-
-  // State for Case Studies
   const [activeCategory, setActiveCategory] = useState("All");
-
-  // State for Testimonials
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
 
-  // Generate Dashboard Data on Slider Change
   useEffect(() => {
     const newData = Array.from({ length: 7 }, (_, i) => ({
       name: `Day ${i + 1}`,
@@ -154,13 +146,7 @@ const Home: React.FC<HomeProps> = ({ onOpenBrief, onNavigate }) => {
   return (
     <>
       {/* Hero */}
-      <section className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden bg-gray-50">
-        <div className="absolute top-0 left-0 w-full h-full overflow-hidden z-0">
-          <div className="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] bg-primary/10 rounded-full blur-[100px] animate-blob mix-blend-multiply" />
-          <div className="absolute bottom-[-10%] right-[-10%] w-[600px] h-[600px] bg-blue-200/20 rounded-full blur-[100px] animate-blob animation-delay-2000 mix-blend-multiply" />
-          <div className="absolute top-[20%] right-[20%] w-[300px] h-[300px] bg-yellow-200/20 rounded-full blur-[80px] animate-blob animation-delay-4000 mix-blend-multiply" />
-        </div>
-
+      <section className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden bg-beige">
         <div className="container mx-auto px-6 relative z-10 text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -179,7 +165,7 @@ const Home: React.FC<HomeProps> = ({ onOpenBrief, onNavigate }) => {
             className="text-5xl md:text-7xl font-display font-extrabold tracking-tight leading-[1.1] mb-6 text-navy-900"
           >
             Transform Your Business with <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-yellow-500 to-primary bg-[200%_auto] animate-shine">
+            <span className="text-primary">
               AI-Powered Web Applications
             </span>
           </motion.h1>
@@ -201,23 +187,26 @@ const Home: React.FC<HomeProps> = ({ onOpenBrief, onNavigate }) => {
           >
             <button 
               onClick={onOpenBrief}
-              className="group relative px-8 py-4 bg-primary text-white text-lg font-bold rounded-full overflow-hidden shadow-[0_4px_20px_rgba(255,122,26,0.3)] hover:shadow-[0_4px_30px_rgba(255,122,26,0.5)] transition-all"
+              className="px-8 py-4 bg-primary text-white text-lg font-bold rounded-md hover:bg-primary-hover transition-all"
             >
-              <span className="relative z-10 flex items-center gap-2">
-                Get Started with AI <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
-              </span>
-              <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
+              Get Started with AI
+            </button>
+            <button 
+              onClick={() => onNavigate('services')}
+              className="px-8 py-4 bg-white border border-gray-200 text-navy-900 text-lg font-bold rounded-md hover:bg-gray-50 transition-all"
+            >
+              Explore Features
             </button>
           </motion.div>
         </div>
       </section>
 
       {/* Tech Stack Marquee */}
-      <section className="py-12 border-y border-gray-100 bg-white overflow-hidden">
+      <section className="py-12 border-y border-gray-200 bg-white overflow-hidden">
         <div className="relative flex overflow-x-hidden group">
           <div className="animate-scroll whitespace-nowrap flex gap-16 px-8">
             {[...TECH_STACK, ...TECH_STACK].map((tech, i) => (
-              <span key={i} className="text-2xl font-display font-bold text-navy-900/30 hover:text-navy-900/80 transition-colors cursor-default">
+              <span key={i} className="text-2xl font-display font-bold text-gray-300 hover:text-navy-900 transition-colors cursor-default">
                 {tech}
               </span>
             ))}
@@ -237,15 +226,11 @@ const Home: React.FC<HomeProps> = ({ onOpenBrief, onNavigate }) => {
             {SOLUTIONS.map((service, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                whileHover={{ y: -10 }}
-                className="p-8 rounded-2xl bg-white border border-gray-100 shadow-lg shadow-gray-200/50 hover:shadow-xl hover:shadow-gray-200/80 transition-all group cursor-default"
+                whileHover={{ y: -5 }}
+                className="p-8 rounded-lg bg-white border border-gray-200 shadow-card hover:shadow-card-hover transition-all group cursor-default"
               >
-                <div className={`w-14 h-14 rounded-xl bg-gray-50 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 ${service.color}`}>
-                  <service.icon size={28} />
+                <div className="w-14 h-14 rounded-md bg-beige flex items-center justify-center mb-6 group-hover:bg-primary transition-colors duration-300">
+                  <service.icon size={28} className="text-primary group-hover:text-white" />
                 </div>
                 <h3 className="text-xl font-bold mb-3 text-navy-900">{service.title}</h3>
                 <p className="text-gray-600 text-sm leading-relaxed mb-6">{service.description}</p>
@@ -262,18 +247,17 @@ const Home: React.FC<HomeProps> = ({ onOpenBrief, onNavigate }) => {
       </section>
 
       {/* Interactive AI Dashboard Demo */}
-      <section className="py-24 bg-navy-900 text-white overflow-hidden relative">
-        <div className="absolute inset-0 bg-grid-white/[0.05] bg-[length:30px_30px]" />
-        <div className="container mx-auto px-6 relative z-10">
+      <section className="py-24 bg-beige text-navy-900 border-y border-gray-200">
+        <div className="container mx-auto px-6">
            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
               <div>
-                 <h2 className="text-3xl md:text-4xl font-display font-bold mb-6">See the Power of AI at Work</h2>
-                 <p className="text-gray-400 text-lg mb-8">
+                 <h2 className="text-3xl md:text-4xl font-display font-bold mb-6 text-navy-900">See the Power of AI at Work</h2>
+                 <p className="text-gray-600 text-lg mb-8">
                    Visualize how AI can optimize your business operations with our real-time demo. 
                    Adjust the parameters to see how AI implementation impacts efficiency and cost.
                  </p>
                  
-                 <div className="space-y-8 bg-white/5 p-8 rounded-2xl border border-white/10 backdrop-blur-sm">
+                 <div className="space-y-8 bg-white p-8 rounded-lg border border-gray-200 shadow-card">
                     <div>
                        <div className="flex justify-between text-sm font-semibold mb-2">
                           <span className="flex items-center gap-2"><Sliders size={16} className="text-primary"/> AI Optimization Level</span>
@@ -285,35 +269,35 @@ const Home: React.FC<HomeProps> = ({ onOpenBrief, onNavigate }) => {
                          max="100" 
                          value={sliderValue} 
                          onChange={(e) => setSliderValue(Number(e.target.value))}
-                         className="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer accent-primary"
+                         className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-primary"
                        />
                     </div>
                     <div className="grid grid-cols-2 gap-4">
-                       <div className="p-4 bg-navy-800 rounded-lg">
-                          <div className="text-gray-400 text-xs uppercase tracking-wider mb-1">Projected Efficiency</div>
-                          <div className="text-2xl font-bold text-green-400">+{Math.round(sliderValue * 0.8)}%</div>
+                       <div className="p-4 bg-beige rounded-lg border border-gray-200">
+                          <div className="text-gray-500 text-xs uppercase tracking-wider mb-1">Projected Efficiency</div>
+                          <div className="text-2xl font-bold text-green-600">+{Math.round(sliderValue * 0.8)}%</div>
                        </div>
-                       <div className="p-4 bg-navy-800 rounded-lg">
-                          <div className="text-gray-400 text-xs uppercase tracking-wider mb-1">Cost Reduction</div>
+                       <div className="p-4 bg-beige rounded-lg border border-gray-200">
+                          <div className="text-gray-500 text-xs uppercase tracking-wider mb-1">Cost Reduction</div>
                           <div className="text-2xl font-bold text-primary">-{Math.round(sliderValue * 0.5)}%</div>
                        </div>
                     </div>
-                    <button onClick={onOpenBrief} className="w-full py-3 bg-white text-navy-900 font-bold rounded-lg hover:bg-gray-100 transition-colors">
+                    <button onClick={onOpenBrief} className="w-full py-3 bg-navy-900 text-white font-bold rounded-md hover:bg-navy-700 transition-colors">
                       Request Live Demo
                     </button>
                  </div>
               </div>
 
-              <div className="bg-white/5 border border-white/10 rounded-2xl p-6 shadow-2xl backdrop-blur-md h-[400px]">
+              <div className="bg-white border border-gray-200 rounded-lg p-6 shadow-card h-[400px]">
                  <div className="flex items-center justify-between mb-6">
                     <div className="flex items-center gap-2">
-                       <Activity size={18} className="text-green-400" />
-                       <span className="font-bold">Real-Time Performance</span>
+                       <Activity size={18} className="text-green-600" />
+                       <span className="font-bold text-navy-900">Real-Time Performance</span>
                     </div>
                     <div className="flex gap-2">
-                       <span className="w-3 h-3 rounded-full bg-red-500/20 border border-red-500" />
-                       <span className="w-3 h-3 rounded-full bg-yellow-500/20 border border-yellow-500" />
-                       <span className="w-3 h-3 rounded-full bg-green-500/20 border border-green-500" />
+                       <span className="w-3 h-3 rounded-full bg-red-500" />
+                       <span className="w-3 h-3 rounded-full bg-yellow-500" />
+                       <span className="w-3 h-3 rounded-full bg-green-500" />
                     </div>
                  </div>
                  <ResponsiveContainer width="100%" height="85%">
@@ -324,18 +308,18 @@ const Home: React.FC<HomeProps> = ({ onOpenBrief, onNavigate }) => {
                              <stop offset="95%" stopColor="#4ade80" stopOpacity={0}/>
                           </linearGradient>
                           <linearGradient id="colorCost" x1="0" y1="0" x2="0" y2="1">
-                             <stop offset="5%" stopColor="#FF7A1A" stopOpacity={0.3}/>
-                             <stop offset="95%" stopColor="#FF7A1A" stopOpacity={0}/>
+                             <stop offset="5%" stopColor="#F27D24" stopOpacity={0.3}/>
+                             <stop offset="95%" stopColor="#F27D24" stopOpacity={0}/>
                           </linearGradient>
                        </defs>
-                       <CartesianGrid strokeDasharray="3 3" stroke="#ffffff10" vertical={false} />
-                       <XAxis dataKey="name" stroke="#ffffff50" fontSize={12} tickLine={false} axisLine={false} />
-                       <YAxis stroke="#ffffff50" fontSize={12} tickLine={false} axisLine={false} />
+                       <CartesianGrid strokeDasharray="3 3" stroke="#E0E0E0" vertical={false} />
+                       <XAxis dataKey="name" stroke="#888888" fontSize={12} tickLine={false} axisLine={false} />
+                       <YAxis stroke="#888888" fontSize={12} tickLine={false} axisLine={false} />
                        <Tooltip 
-                          contentStyle={{ backgroundColor: '#1E2742', borderColor: '#ffffff20', color: '#fff' }}
+                          contentStyle={{ backgroundColor: '#fff', borderColor: '#E0E0E0', color: '#333' }}
                        />
                        <Area type="monotone" dataKey="efficiency" stroke="#4ade80" strokeWidth={2} fillOpacity={1} fill="url(#colorEff)" name="Efficiency" />
-                       <Area type="monotone" dataKey="cost" stroke="#FF7A1A" strokeWidth={2} fillOpacity={1} fill="url(#colorCost)" name="Op Costs" />
+                       <Area type="monotone" dataKey="cost" stroke="#F27D24" strokeWidth={2} fillOpacity={1} fill="url(#colorCost)" name="Op Costs" />
                     </AreaChart>
                  </ResponsiveContainer>
               </div>
@@ -344,7 +328,7 @@ const Home: React.FC<HomeProps> = ({ onOpenBrief, onNavigate }) => {
       </section>
 
       {/* Industry Specific Solutions */}
-      <section className="py-24 bg-gray-50">
+      <section className="py-24 bg-white">
         <div className="container mx-auto px-6">
            <div className="text-center mb-16">
               <h2 className="text-4xl font-display font-bold text-navy-900 mb-4">AI for Every Industry</h2>
@@ -356,9 +340,9 @@ const Home: React.FC<HomeProps> = ({ onOpenBrief, onNavigate }) => {
                  <motion.div 
                    key={i}
                    whileHover={{ y: -5 }}
-                   className="bg-white p-8 rounded-2xl shadow-sm border border-gray-200 group hover:border-primary/50 transition-all"
+                   className="bg-beige p-8 rounded-lg shadow-sm border border-gray-200 group hover:border-primary transition-all"
                  >
-                    <div className="w-12 h-12 rounded-lg bg-gray-100 flex items-center justify-center text-navy-900 mb-4 group-hover:bg-primary group-hover:text-white transition-colors">
+                    <div className="w-12 h-12 rounded-md bg-white flex items-center justify-center text-primary mb-4 group-hover:bg-primary group-hover:text-white transition-colors border border-gray-100">
                        <ind.icon size={24} />
                     </div>
                     <h4 className="text-xl font-bold text-navy-900 mb-2">{ind.name}</h4>
@@ -373,25 +357,17 @@ const Home: React.FC<HomeProps> = ({ onOpenBrief, onNavigate }) => {
       </section>
 
       {/* AI Development Process */}
-      <section className="py-24 bg-white">
+      <section className="py-24 bg-beige border-y border-gray-200">
         <div className="container mx-auto px-6">
           <div className="text-center mb-20">
             <h2 className="text-4xl font-display font-bold mb-6 text-navy-900">
-              Our AI Development & Integration Process
+              Our AI Development Process
             </h2>
             <p className="text-gray-600">We make AI implementation easy, from conceptualization to integration.</p>
           </div>
 
           <div className="relative">
-            <div className="hidden md:block absolute top-[40px] left-0 w-full h-1 bg-gray-100">
-                 <motion.div 
-                   initial={{ width: "0%" }}
-                   whileInView={{ width: "100%" }}
-                   transition={{ duration: 1.5, ease: "easeInOut" }}
-                   viewport={{ once: true }}
-                   className="h-full bg-gradient-to-r from-white via-primary to-white opacity-50"
-                 />
-            </div>
+            <div className="hidden md:block absolute top-[40px] left-0 w-full h-0.5 bg-gray-200"></div>
 
             <div className="grid grid-cols-1 md:grid-cols-4 gap-12 relative z-10">
               {PROCESS.map((step, index) => (
@@ -403,7 +379,7 @@ const Home: React.FC<HomeProps> = ({ onOpenBrief, onNavigate }) => {
                   transition={{ delay: index * 0.2 }}
                   className="relative flex flex-col items-center text-center group"
                 >
-                  <div className="w-20 h-20 rounded-full bg-white border-4 border-gray-50 flex items-center justify-center text-xl font-bold mb-6 group-hover:border-primary group-hover:text-primary transition-colors shadow-lg shadow-gray-200 z-20 text-navy-900">
+                  <div className="w-20 h-20 rounded-full bg-white border-2 border-gray-200 flex items-center justify-center text-xl font-bold mb-6 group-hover:border-primary group-hover:text-primary transition-colors z-20 text-navy-900">
                     <span className="text-sm text-gray-400 block -mb-1 mr-1">{step.step}</span>
                   </div>
                   <h3 className="text-lg font-bold mb-2 text-navy-900">{step.title}</h3>
@@ -414,7 +390,7 @@ const Home: React.FC<HomeProps> = ({ onOpenBrief, onNavigate }) => {
           </div>
           
           <div className="text-center mt-16">
-             <button onClick={onOpenBrief} className="px-8 py-3 bg-navy-900 text-white font-bold rounded-full hover:bg-navy-800 transition-all shadow-lg">
+             <button onClick={onOpenBrief} className="px-8 py-3 bg-navy-900 text-white font-bold rounded-md hover:bg-navy-700 transition-all">
                 Start Your Project Today
              </button>
           </div>
@@ -422,7 +398,7 @@ const Home: React.FC<HomeProps> = ({ onOpenBrief, onNavigate }) => {
       </section>
 
       {/* Case Studies */}
-      <section className="py-24 bg-gray-50">
+      <section className="py-24 bg-white">
          <div className="container mx-auto px-6">
             <div className="flex flex-col md:flex-row justify-between items-center mb-12">
                <div>
@@ -434,7 +410,7 @@ const Home: React.FC<HomeProps> = ({ onOpenBrief, onNavigate }) => {
                      <button 
                        key={cat}
                        onClick={() => setActiveCategory(cat)}
-                       className={`px-4 py-2 rounded-full text-sm font-semibold whitespace-nowrap transition-colors ${activeCategory === cat ? 'bg-primary text-white' : 'bg-white text-gray-600 hover:bg-gray-200'}`}
+                       className={`px-4 py-2 rounded-md text-sm font-semibold whitespace-nowrap transition-colors ${activeCategory === cat ? 'bg-primary text-white' : 'bg-beige text-gray-600 hover:bg-gray-200'}`}
                      >
                        {cat}
                      </button>
@@ -451,11 +427,10 @@ const Home: React.FC<HomeProps> = ({ onOpenBrief, onNavigate }) => {
                        initial={{ opacity: 0, scale: 0.9 }}
                        animate={{ opacity: 1, scale: 1 }}
                        exit={{ opacity: 0, scale: 0.9 }}
-                       className="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-lg transition-all group"
+                       className="bg-white rounded-lg overflow-hidden border border-gray-200 hover:shadow-card-hover transition-all group"
                      >
-                        <div className={`h-40 ${cs.image} flex items-center justify-center`}>
-                           {/* Placeholder for real image */}
-                           <BarChart3 className="text-navy-900/20" size={48} />
+                        <div className={`h-40 ${cs.image} flex items-center justify-center border-b border-gray-100`}>
+                           <BarChart3 className="text-primary/40" size={48} />
                         </div>
                         <div className="p-6">
                            <div className="text-xs font-bold text-primary uppercase tracking-wider mb-2">{cs.category}</div>
@@ -473,7 +448,7 @@ const Home: React.FC<HomeProps> = ({ onOpenBrief, onNavigate }) => {
       </section>
 
       {/* Testimonials */}
-      <section className="py-24 bg-white relative overflow-hidden">
+      <section className="py-24 bg-beige relative overflow-hidden">
         <div className="container mx-auto px-6 relative z-10">
            <div className="text-center mb-16">
               <h2 className="text-4xl font-display font-bold text-navy-900 mb-4">What Our Clients Are Saying</h2>
@@ -481,7 +456,7 @@ const Home: React.FC<HomeProps> = ({ onOpenBrief, onNavigate }) => {
            </div>
 
            <div className="max-w-4xl mx-auto">
-              <div className="relative bg-gray-50 rounded-3xl p-8 md:p-12 border border-gray-100">
+              <div className="relative bg-white rounded-lg p-8 md:p-12 border border-gray-200 shadow-card">
                  <Quote className="absolute top-8 left-8 text-primary/20" size={64} />
                  
                  <div className="relative z-10 text-center">
@@ -501,7 +476,7 @@ const Home: React.FC<HomeProps> = ({ onOpenBrief, onNavigate }) => {
                              <img 
                                src={TESTIMONIALS[currentTestimonial].image} 
                                alt={TESTIMONIALS[currentTestimonial].name}
-                               className="w-16 h-16 rounded-full border-4 border-white shadow-md mb-4"
+                               className="w-16 h-16 rounded-full border-4 border-beige shadow-sm mb-4"
                              />
                              <h4 className="font-bold text-navy-900">{TESTIMONIALS[currentTestimonial].name}</h4>
                              <p className="text-sm text-gray-500">{TESTIMONIALS[currentTestimonial].role}, {TESTIMONIALS[currentTestimonial].company}</p>
@@ -510,18 +485,15 @@ const Home: React.FC<HomeProps> = ({ onOpenBrief, onNavigate }) => {
                     </AnimatePresence>
                  </div>
 
-                 {/* Navigation Buttons */}
-                 <button onClick={prevTestimonial} className="absolute left-4 top-1/2 -translate-y-1/2 p-2 bg-white rounded-full shadow-md text-navy-900 hover:text-primary transition-colors hidden md:block">
+                 <button onClick={prevTestimonial} className="absolute left-4 top-1/2 -translate-y-1/2 p-2 bg-beige rounded-full border border-gray-200 text-navy-900 hover:text-primary transition-colors hidden md:block">
                     <ChevronLeft size={24} />
                  </button>
-                 <button onClick={nextTestimonial} className="absolute right-4 top-1/2 -translate-y-1/2 p-2 bg-white rounded-full shadow-md text-navy-900 hover:text-primary transition-colors hidden md:block">
+                 <button onClick={nextTestimonial} className="absolute right-4 top-1/2 -translate-y-1/2 p-2 bg-beige rounded-full border border-gray-200 text-navy-900 hover:text-primary transition-colors hidden md:block">
                     <ChevronRight size={24} />
                  </button>
               </div>
 
-              {/* Logo Wall Placeholder */}
               <div className="mt-12 flex flex-wrap justify-center gap-8 md:gap-16 opacity-50 grayscale hover:grayscale-0 transition-all duration-500">
-                 {/* Reusing text for logo placeholders for simplicity */}
                  {["LogiStream", "TechFlow", "Novus Retail", "FinCorp", "MediCare"].map((logo, i) => (
                     <span key={i} className="text-xl font-display font-bold text-navy-900">{logo}</span>
                  ))}
@@ -531,15 +503,15 @@ const Home: React.FC<HomeProps> = ({ onOpenBrief, onNavigate }) => {
       </section>
 
       {/* Data Security */}
-      <section className="py-20 bg-navy-900 text-white border-b border-white/5">
+      <section className="py-20 bg-white border-t border-gray-200">
          <div className="container mx-auto px-6">
             <div className="flex flex-col md:flex-row items-center justify-between gap-12">
                <div className="md:w-1/2">
-                  <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-500/10 text-blue-400 text-xs font-bold uppercase tracking-wider mb-6 border border-blue-500/20">
+                  <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-50 text-navy-800 text-xs font-bold uppercase tracking-wider mb-6 border border-blue-100">
                      <Shield size={14} /> Enterprise Grade Security
                   </div>
-                  <h2 className="text-3xl md:text-4xl font-display font-bold mb-6">Data Security is Our Priority</h2>
-                  <p className="text-gray-400 mb-8 leading-relaxed">
+                  <h2 className="text-3xl md:text-4xl font-display font-bold mb-6 text-navy-900">Data Security is Our Priority</h2>
+                  <p className="text-gray-600 mb-8 leading-relaxed">
                      We follow industry-leading standards to ensure your data remains secure and private. 
                      From SOC2 compliance to end-to-end encryption, your intellectual property is safe with us.
                   </p>
@@ -548,15 +520,15 @@ const Home: React.FC<HomeProps> = ({ onOpenBrief, onNavigate }) => {
                   </button>
                </div>
                <div className="md:w-1/2 grid grid-cols-1 sm:grid-cols-2 gap-6">
-                  <div className="p-6 bg-white/5 rounded-xl border border-white/10">
+                  <div className="p-6 bg-beige rounded-lg border border-gray-200">
                      <Lock className="text-primary mb-4" size={28} />
-                     <h4 className="font-bold mb-2">End-to-End Encryption</h4>
-                     <p className="text-sm text-gray-400">AES-256 bit encryption for all data at rest and in transit.</p>
+                     <h4 className="font-bold mb-2 text-navy-900">End-to-End Encryption</h4>
+                     <p className="text-sm text-gray-500">AES-256 bit encryption for all data at rest and in transit.</p>
                   </div>
-                  <div className="p-6 bg-white/5 rounded-xl border border-white/10">
-                     <Server className="text-blue-400 mb-4" size={28} />
-                     <h4 className="font-bold mb-2">On-Premise Options</h4>
-                     <p className="text-sm text-gray-400">Deploy models on your own infrastructure for total control.</p>
+                  <div className="p-6 bg-beige rounded-lg border border-gray-200">
+                     <Server className="text-navy-800 mb-4" size={28} />
+                     <h4 className="font-bold mb-2 text-navy-900">On-Premise Options</h4>
+                     <p className="text-sm text-gray-500">Deploy models on your own infrastructure for total control.</p>
                   </div>
                </div>
             </div>
@@ -564,16 +536,15 @@ const Home: React.FC<HomeProps> = ({ onOpenBrief, onNavigate }) => {
       </section>
 
       {/* CTA */}
-      <section className="py-24 relative overflow-hidden bg-white">
-          <div className="absolute inset-0 bg-gradient-to-b from-white to-primary/5"></div>
-          <div className="container mx-auto px-6 relative z-10 text-center">
+      <section className="py-24 bg-beige text-center">
+          <div className="container mx-auto px-6">
             <h2 className="text-4xl md:text-5xl font-display font-bold mb-8 text-navy-900">Ready to Unlock the Power of AI?</h2>
             <p className="text-gray-600 mb-10 max-w-2xl mx-auto">
               Use our AI Brief Generator to scope your project in minutes. It's fast, free, and the first step to production.
             </p>
             <button 
               onClick={onOpenBrief}
-              className="px-8 py-4 bg-primary text-white text-lg font-bold rounded-full hover:bg-primary-hover shadow-[0_10px_30px_rgba(255,122,26,0.3)] transition-all flex items-center gap-2 mx-auto"
+              className="px-8 py-4 bg-primary text-white text-lg font-bold rounded-md hover:bg-primary-hover transition-all flex items-center gap-2 mx-auto"
             >
               <Rocket size={20} />
               Start Your AI Brief

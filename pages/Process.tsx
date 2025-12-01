@@ -43,7 +43,7 @@ const Process: React.FC<ProcessProps> = ({ onOpenBrief }) => {
   return (
     <div className="bg-white">
       {/* 1. Hero Section */}
-      <section className="relative pt-32 pb-20 overflow-hidden bg-gradient-to-b from-blue-50 to-white">
+      <section className="relative pt-32 pb-20 overflow-hidden bg-beige">
         <div className="container mx-auto px-6 text-center relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -62,11 +62,11 @@ const Process: React.FC<ProcessProps> = ({ onOpenBrief }) => {
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <button 
                 onClick={onOpenBrief}
-                className="px-8 py-4 bg-primary text-white text-lg font-bold rounded-full shadow-lg hover:bg-primary-hover hover:scale-105 transition-all"
+                className="px-8 py-4 bg-primary text-white text-lg font-bold rounded-md shadow-lg hover:bg-primary-hover transition-all"
               >
                 Get Started Now
               </button>
-              <button className="px-8 py-4 bg-white text-navy-900 border border-gray-200 text-lg font-bold rounded-full hover:bg-gray-50 transition-all">
+              <button className="px-8 py-4 bg-white text-navy-900 border border-gray-200 text-lg font-bold rounded-md hover:bg-gray-50 transition-all">
                 See Live Projects
               </button>
             </div>
@@ -83,16 +83,7 @@ const Process: React.FC<ProcessProps> = ({ onOpenBrief }) => {
           </div>
 
           <div className="relative max-w-5xl mx-auto">
-            {/* Connecting Line */}
-            <div className="hidden md:block absolute top-12 left-0 w-full h-1 bg-gray-100">
-               <motion.div 
-                 initial={{ width: 0 }}
-                 whileInView={{ width: "100%" }}
-                 transition={{ duration: 1.5 }}
-                 viewport={{ once: true }}
-                 className="h-full bg-primary/30"
-               />
-            </div>
+            <div className="hidden md:block absolute top-12 left-0 w-full h-0.5 bg-gray-200"></div>
 
             <div className="grid grid-cols-1 md:grid-cols-5 gap-8">
               {PROCESS_STEPS.map((step, index) => (
@@ -105,7 +96,7 @@ const Process: React.FC<ProcessProps> = ({ onOpenBrief }) => {
                   whileHover={{ y: -5 }}
                   className="relative z-10 flex flex-col items-center text-center group"
                 >
-                  <div className="w-24 h-24 bg-white rounded-full border-4 border-gray-50 flex items-center justify-center text-navy-900 shadow-md group-hover:border-primary group-hover:text-primary transition-all duration-300 mb-6">
+                  <div className="w-24 h-24 bg-white rounded-full border-4 border-gray-200 flex items-center justify-center text-navy-900 shadow-sm group-hover:border-primary group-hover:text-primary transition-all duration-300 mb-6">
                     <step.icon size={32} />
                   </div>
                   <div className="text-xs font-bold text-primary uppercase tracking-wider mb-2">{step.weeks}</div>
@@ -121,7 +112,7 @@ const Process: React.FC<ProcessProps> = ({ onOpenBrief }) => {
       </section>
 
       {/* 3. Why 8 Weeks Beats 6 Months */}
-      <section className="py-24 bg-gray-50">
+      <section className="py-24 bg-beige">
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-display font-bold text-navy-900 mb-4">Why 8 Weeks Beats 6 Months</h2>
@@ -130,7 +121,7 @@ const Process: React.FC<ProcessProps> = ({ onOpenBrief }) => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-4xl mx-auto items-center">
              {/* Traditional Way */}
-             <div className="bg-white p-8 rounded-2xl border border-gray-200 opacity-70 hover:opacity-100 transition-opacity">
+             <div className="bg-white p-8 rounded-lg border border-gray-200 opacity-80 hover:opacity-100 transition-opacity">
                 <h3 className="text-xl font-bold text-gray-500 mb-6">Traditional Agency</h3>
                 <div className="space-y-6">
                    <div>
@@ -166,9 +157,9 @@ const Process: React.FC<ProcessProps> = ({ onOpenBrief }) => {
              {/* Sunai Way */}
              <motion.div 
                whileHover={{ scale: 1.02 }}
-               className="bg-white p-10 rounded-2xl border-2 border-primary/20 shadow-xl relative overflow-hidden"
+               className="bg-white p-10 rounded-lg border-2 border-primary shadow-card relative overflow-hidden"
              >
-                <div className="absolute top-0 right-0 bg-primary text-white text-xs font-bold px-3 py-1 rounded-bl-lg">RECOMMENDED</div>
+                <div className="absolute top-0 right-0 bg-primary text-white text-xs font-bold px-3 py-1 rounded-bl-md">RECOMMENDED</div>
                 <h3 className="text-2xl font-bold text-navy-900 mb-6 flex items-center gap-2">
                    <Zap className="text-primary fill-primary" size={24} /> Sunai Approach
                 </h3>
@@ -217,7 +208,7 @@ const Process: React.FC<ProcessProps> = ({ onOpenBrief }) => {
                       </div>
                    </div>
                 </div>
-                <button onClick={onOpenBrief} className="w-full mt-8 py-4 bg-navy-900 text-white font-bold rounded-xl hover:bg-navy-800 transition-all flex items-center justify-center gap-2">
+                <button onClick={onOpenBrief} className="w-full mt-8 py-4 bg-navy-900 text-white font-bold rounded-md hover:bg-navy-700 transition-all flex items-center justify-center gap-2">
                    Get Your AI Solution <ArrowRight size={18} />
                 </button>
              </motion.div>
@@ -240,8 +231,8 @@ const Process: React.FC<ProcessProps> = ({ onOpenBrief }) => {
                   { title: "3. Development", desc: "Agile sprints to build models and frontend simultaneously.", items: ["Model Training", "API Development", "Frontend Implementation"] },
                   { title: "4. Deployment", desc: "Launching to production with monitoring and support.", items: ["Cloud Setup", "Load Testing", "Post-Launch Tuning"] },
                ].map((phase, i) => (
-                  <div key={i} className="p-8 border border-gray-100 rounded-2xl bg-white hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
-                     <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center text-primary font-bold text-xl mb-6">
+                  <div key={i} className="p-8 border border-gray-200 rounded-lg bg-white hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+                     <div className="w-12 h-12 bg-beige rounded-md flex items-center justify-center text-primary font-bold text-xl mb-6">
                         {i + 1}
                      </div>
                      <h3 className="text-xl font-bold text-navy-900 mb-3">{phase.title}</h3>
@@ -263,12 +254,12 @@ const Process: React.FC<ProcessProps> = ({ onOpenBrief }) => {
       </section>
 
       {/* 5. Proven Track Record */}
-      <section className="py-20 bg-navy-900 text-white">
+      <section className="py-20 bg-beige border-t border-gray-200">
          <div className="container mx-auto px-6">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                <div>
-                  <h2 className="text-3xl md:text-4xl font-display font-bold mb-6">Proven Track Record</h2>
-                  <p className="text-gray-400 mb-10 text-lg">
+                  <h2 className="text-3xl md:text-4xl font-display font-bold mb-6 text-navy-900">Proven Track Record</h2>
+                  <p className="text-gray-600 mb-10 text-lg">
                      We don't just promise results; we have the data to back it up. 
                      Our agile methodology has helped startups and enterprises alike launch faster.
                   </p>
@@ -280,12 +271,12 @@ const Process: React.FC<ProcessProps> = ({ onOpenBrief }) => {
                </div>
                <div className="grid grid-cols-2 md:grid-cols-3 gap-8">
                   {METRICS.map((metric, i) => (
-                     <div key={i} className="text-center p-6 bg-white/5 rounded-2xl border border-white/10 backdrop-blur-sm">
-                        <div className="w-10 h-10 mx-auto bg-primary/20 rounded-full flex items-center justify-center text-primary mb-4">
+                     <div key={i} className="text-center p-6 bg-white rounded-lg border border-gray-200">
+                        <div className="w-10 h-10 mx-auto bg-beige rounded-full flex items-center justify-center text-primary mb-4">
                            <metric.icon size={20} />
                         </div>
-                        <div className="text-3xl font-bold mb-1">{metric.value}</div>
-                        <div className="text-xs text-gray-400 uppercase tracking-wider">{metric.label}</div>
+                        <div className="text-3xl font-bold mb-1 text-navy-900">{metric.value}</div>
+                        <div className="text-xs text-gray-500 uppercase tracking-wider">{metric.label}</div>
                      </div>
                   ))}
                </div>
@@ -296,10 +287,10 @@ const Process: React.FC<ProcessProps> = ({ onOpenBrief }) => {
       {/* 6. Timeline Calculator */}
       <section className="py-24 bg-white">
          <div className="container mx-auto px-6">
-            <div className="max-w-3xl mx-auto bg-white rounded-3xl shadow-2xl overflow-hidden border border-gray-100">
-               <div className="bg-navy-900 p-8 text-white text-center">
-                  <h2 className="text-2xl font-bold mb-2">Calculate Your Project Timeline</h2>
-                  <p className="text-gray-400 text-sm">Get a clear idea of your project’s delivery date.</p>
+            <div className="max-w-3xl mx-auto bg-white rounded-lg shadow-card overflow-hidden border border-gray-200">
+               <div className="bg-beige p-8 text-center border-b border-gray-200">
+                  <h2 className="text-2xl font-bold mb-2 text-navy-900">Calculate Your Project Timeline</h2>
+                  <p className="text-gray-500 text-sm">Get a clear idea of your project’s delivery date.</p>
                </div>
                
                <div className="p-8 md:p-12">
@@ -314,7 +305,7 @@ const Process: React.FC<ProcessProps> = ({ onOpenBrief }) => {
                            <label className="block text-sm font-bold text-navy-900 mb-2">Project Type</label>
                            <select 
                              required
-                             className="w-full p-4 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-primary outline-none"
+                             className="w-full p-4 bg-gray-50 border border-gray-200 rounded-md focus:ring-2 focus:ring-primary outline-none"
                              onChange={(e) => setCalcData({...calcData, type: e.target.value})}
                            >
                               <option value="">Select a project type...</option>
@@ -328,7 +319,7 @@ const Process: React.FC<ProcessProps> = ({ onOpenBrief }) => {
                            <label className="block text-sm font-bold text-navy-900 mb-2">Industry</label>
                            <select 
                              required
-                             className="w-full p-4 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-primary outline-none"
+                             className="w-full p-4 bg-gray-50 border border-gray-200 rounded-md focus:ring-2 focus:ring-primary outline-none"
                              onChange={(e) => setCalcData({...calcData, industry: e.target.value})}
                            >
                               <option value="">Select your industry...</option>
@@ -338,7 +329,7 @@ const Process: React.FC<ProcessProps> = ({ onOpenBrief }) => {
                               <option value="Technology">Technology</option>
                            </select>
                         </div>
-                        <button type="submit" className="w-full py-4 bg-primary text-white font-bold rounded-xl hover:bg-primary-hover shadow-lg transition-all mt-4">
+                        <button type="submit" className="w-full py-4 bg-primary text-white font-bold rounded-md hover:bg-primary-hover shadow-lg transition-all mt-4">
                            Calculate Timeline
                         </button>
                      </motion.form>
@@ -367,7 +358,7 @@ const Process: React.FC<ProcessProps> = ({ onOpenBrief }) => {
                                  Calculate Again
                               </button>
                               <div className="mt-8 pt-8 border-t border-gray-100">
-                                 <button onClick={onOpenBrief} className="px-8 py-3 bg-navy-900 text-white font-bold rounded-full hover:bg-navy-800 transition-all">
+                                 <button onClick={onOpenBrief} className="px-8 py-3 bg-navy-900 text-white font-bold rounded-md hover:bg-navy-800 transition-all">
                                     Book Consultation
                                  </button>
                               </div>
@@ -381,7 +372,7 @@ const Process: React.FC<ProcessProps> = ({ onOpenBrief }) => {
       </section>
 
       {/* 7. Ready to Launch */}
-      <section className="py-24 bg-gray-50">
+      <section className="py-24 bg-beige">
         <div className="container mx-auto px-6 text-center">
           <motion.div
              initial={{ opacity: 0, scale: 0.95 }}
@@ -394,7 +385,7 @@ const Process: React.FC<ProcessProps> = ({ onOpenBrief }) => {
              </p>
              <button 
                onClick={onOpenBrief}
-               className="px-10 py-5 bg-primary text-white text-xl font-bold rounded-full shadow-xl hover:bg-primary-hover hover:scale-105 transition-all flex items-center gap-3 mx-auto"
+               className="px-10 py-5 bg-primary text-white text-xl font-bold rounded-md shadow-lg hover:bg-primary-hover hover:scale-105 transition-all flex items-center gap-3 mx-auto"
              >
                <Rocket size={24} /> Start Your Project Brief
              </button>

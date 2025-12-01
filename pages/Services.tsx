@@ -15,12 +15,7 @@ const Services: React.FC<ServicesProps> = ({ onOpenConsultation }) => {
   return (
     <div className="bg-white">
       {/* 1. Hero Section */}
-      <section className="relative pt-32 pb-20 overflow-hidden bg-gray-50">
-        <div className="absolute inset-0 z-0">
-          <div className="absolute top-[-20%] right-[-10%] w-[800px] h-[800px] bg-blue-100/50 rounded-full blur-[120px] mix-blend-multiply opacity-70" />
-          <div className="absolute bottom-[-10%] left-[-10%] w-[600px] h-[600px] bg-primary/10 rounded-full blur-[100px] mix-blend-multiply opacity-60" />
-        </div>
-
+      <section className="relative pt-32 pb-20 overflow-hidden bg-beige">
         <div className="container mx-auto px-6 relative z-10 text-center">
           <motion.h1 
             initial={{ opacity: 0, y: 30 }}
@@ -29,7 +24,7 @@ const Services: React.FC<ServicesProps> = ({ onOpenConsultation }) => {
             className="text-5xl md:text-6xl font-display font-extrabold text-navy-900 mb-6 leading-tight"
           >
             Transform Your Business with <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-orange-600">
+            <span className="text-primary">
               AI-Powered Web Applications
             </span>
           </motion.h1>
@@ -47,9 +42,9 @@ const Services: React.FC<ServicesProps> = ({ onOpenConsultation }) => {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, delay: 0.4 }}
-            whileHover={{ scale: 1.05, boxShadow: "0 10px 30px -10px rgba(255, 122, 26, 0.5)" }}
+            whileHover={{ scale: 1.05 }}
             onClick={onOpenConsultation}
-            className="px-8 py-4 bg-primary text-white text-lg font-bold rounded-full shadow-lg hover:bg-primary-hover transition-all"
+            className="px-8 py-4 bg-primary text-white text-lg font-bold rounded-md hover:bg-primary-hover transition-all"
           >
             Get Started with AI
           </motion.button>
@@ -76,9 +71,9 @@ const Services: React.FC<ServicesProps> = ({ onOpenConsultation }) => {
               <motion.div
                 key={i}
                 whileHover={{ y: -5 }}
-                className="p-8 rounded-2xl bg-white border border-gray-100 shadow-md hover:shadow-xl transition-all group"
+                className="p-8 rounded-lg bg-white border border-gray-200 shadow-card hover:shadow-card-hover transition-all group"
               >
-                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center text-primary mb-6 group-hover:scale-110 transition-transform">
+                <div className="w-12 h-12 bg-beige rounded-md flex items-center justify-center text-primary mb-6 group-hover:bg-primary group-hover:text-white transition-colors">
                   <service.icon size={24} />
                 </div>
                 <h4 className="text-xl font-bold text-navy-900 mb-3">{service.title}</h4>
@@ -90,7 +85,7 @@ const Services: React.FC<ServicesProps> = ({ onOpenConsultation }) => {
       </section>
 
       {/* 3. Use Cases Section */}
-      <section className="py-24 bg-gray-50">
+      <section className="py-24 bg-beige">
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-display font-bold text-navy-900 mb-4">AI Use Cases for Your Business</h2>
@@ -106,9 +101,9 @@ const Services: React.FC<ServicesProps> = ({ onOpenConsultation }) => {
               { icon: Factory, title: "Manufacturing", items: ["Process Automation", "Predictive Maintenance"] },
               { icon: ShieldCheck, title: "Cybersecurity", items: ["Threat Detection", "Automated Response"] }
             ].map((useCase, i) => (
-              <div key={i} className="bg-white p-8 rounded-xl shadow-sm border border-gray-100 hover:border-primary/30 transition-all cursor-default">
+              <div key={i} className="bg-white p-8 rounded-lg shadow-sm border border-gray-200 hover:border-primary transition-all cursor-default">
                 <div className="flex items-center gap-4 mb-6">
-                  <div className="p-3 bg-gray-100 rounded-lg text-navy-900">
+                  <div className="p-3 bg-beige rounded-md text-navy-900">
                     <useCase.icon size={24} />
                   </div>
                   <h4 className="text-lg font-bold text-navy-900">{useCase.title}</h4>
@@ -136,16 +131,7 @@ const Services: React.FC<ServicesProps> = ({ onOpenConsultation }) => {
           </div>
 
           <div className="relative">
-            {/* Flow Line (Desktop) */}
-            <div className="hidden md:block absolute top-[72px] left-0 w-full h-1 bg-gray-100">
-               <motion.div 
-                 initial={{ width: 0 }}
-                 whileInView={{ width: "100%" }}
-                 transition={{ duration: 2, ease: "easeOut" }}
-                 viewport={{ once: true }}
-                 className="h-full bg-gradient-to-r from-primary to-orange-500"
-               />
-            </div>
+            <div className="hidden md:block absolute top-[72px] left-0 w-full h-0.5 bg-gray-200"></div>
 
             <div className="grid grid-cols-1 md:grid-cols-4 gap-8 relative z-10">
                {[
@@ -180,24 +166,20 @@ const Services: React.FC<ServicesProps> = ({ onOpenConsultation }) => {
                    whileInView={{ opacity: 1, y: 0 }}
                    viewport={{ once: true }}
                    transition={{ delay: i * 0.2 }}
-                   whileHover={{ y: -8 }}
-                   className="group flex flex-col items-center text-center bg-white p-6 rounded-2xl border border-transparent hover:border-primary/20 hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.1)] transition-all duration-300 relative overflow-hidden"
+                   whileHover={{ y: -5 }}
+                   className="group flex flex-col items-center text-center bg-white p-6 rounded-lg border border-transparent hover:border-gray-200 transition-all duration-300 relative"
                  >
-                    {/* Active Indicator Line */}
-                    <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-
-                    <div className="w-24 h-24 rounded-full bg-white border-4 border-gray-50 shadow-lg flex items-center justify-center mb-6 z-10 relative transition-all duration-500 group-hover:border-primary group-hover:scale-110 group-hover:rotate-6">
-                       <span className="text-2xl font-bold text-primary group-hover:scale-110 transition-transform duration-300">{item.step}</span>
+                    <div className="w-24 h-24 rounded-full bg-white border-4 border-gray-100 flex items-center justify-center mb-6 z-10 relative transition-all duration-300 group-hover:border-primary">
+                       <span className="text-2xl font-bold text-primary">{item.step}</span>
                     </div>
                     
-                    <h3 className="text-xl font-bold text-navy-900 mb-2 group-hover:text-primary transition-colors">{item.title}</h3>
+                    <h3 className="text-xl font-bold text-navy-900 mb-2">{item.title}</h3>
                     <p className="text-sm text-gray-500 mb-2">{item.desc}</p>
                     
-                    {/* Interactive Detail Reveal */}
-                    <div className="grid grid-rows-[0fr] group-hover:grid-rows-[1fr] transition-[grid-template-rows] duration-500 ease-out w-full">
+                    <div className="grid grid-rows-[0fr] group-hover:grid-rows-[1fr] transition-[grid-template-rows] duration-300 ease-out w-full">
                       <div className="overflow-hidden">
-                        <div className="pt-3 opacity-0 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0 transition-all duration-500 delay-75 ease-out">
-                           <div className="text-xs text-gray-600 bg-gray-50/80 p-4 rounded-xl border border-primary/10 font-medium leading-relaxed flex items-start gap-2 text-left shadow-inner">
+                        <div className="pt-3 opacity-0 group-hover:opacity-100 transition-all duration-300 delay-75">
+                           <div className="text-xs text-gray-600 bg-beige p-4 rounded-md border border-gray-200 font-medium leading-relaxed flex items-start gap-2 text-left">
                              <div className="mt-0.5 min-w-[14px] text-primary">
                                <CheckCircle2 size={14} />
                              </div>
@@ -214,11 +196,11 @@ const Services: React.FC<ServicesProps> = ({ onOpenConsultation }) => {
       </section>
 
       {/* 5. Benefits Section */}
-      <section className="py-24 bg-navy-900 text-white">
+      <section className="py-24 bg-beige text-navy-900">
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div>
-              <h2 className="text-3xl md:text-4xl font-display font-bold mb-8">How AI Benefits Your Business</h2>
+              <h2 className="text-3xl md:text-4xl font-display font-bold mb-8 text-navy-900">How AI Benefits Your Business</h2>
               <div className="space-y-8">
                 {[
                   { title: "Enhanced Decision-Making", desc: "Leverage predictive models for smarter choices." },
@@ -231,33 +213,30 @@ const Services: React.FC<ServicesProps> = ({ onOpenConsultation }) => {
                       <CheckCircle2 size={24} />
                     </div>
                     <div>
-                      <h4 className="text-xl font-bold mb-2">{benefit.title}</h4>
-                      <p className="text-gray-400 text-sm">{benefit.desc}</p>
+                      <h4 className="text-xl font-bold mb-2 text-navy-900">{benefit.title}</h4>
+                      <p className="text-gray-600 text-sm">{benefit.desc}</p>
                     </div>
                   </div>
                 ))}
               </div>
-              <button onClick={onOpenConsultation} className="mt-10 px-8 py-3 border border-white/20 rounded-full hover:bg-white hover:text-navy-900 transition-all font-semibold">
+              <button onClick={onOpenConsultation} className="mt-10 px-8 py-3 bg-white border border-gray-200 rounded-md hover:bg-white hover:text-primary hover:border-primary transition-all font-semibold">
                 Discover How AI Can Help
               </button>
             </div>
             <div className="relative">
-               <div className="aspect-square rounded-2xl bg-gradient-to-br from-primary/20 to-blue-500/20 backdrop-blur-sm border border-white/10 p-8 flex items-center justify-center">
+               <div className="aspect-square rounded-lg bg-white p-8 flex items-center justify-center border border-gray-200 shadow-card">
                   <div className="text-center">
-                    <div className="text-6xl font-bold text-white mb-2">300%</div>
+                    <div className="text-6xl font-bold text-primary mb-2">300%</div>
                     <div className="text-gray-400 uppercase tracking-widest text-sm">ROI Average</div>
                   </div>
                </div>
-               {/* Decorative elements */}
-               <div className="absolute -top-10 -right-10 w-32 h-32 bg-primary/30 rounded-full blur-3xl" />
-               <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-blue-500/30 rounded-full blur-3xl" />
             </div>
           </div>
         </div>
       </section>
 
       {/* 6. Success Stories */}
-      <section className="py-24 bg-gray-50">
+      <section className="py-24 bg-white">
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-display font-bold text-navy-900">Success Stories</h2>
@@ -265,9 +244,9 @@ const Services: React.FC<ServicesProps> = ({ onOpenConsultation }) => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-            <div className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
+            <div className="bg-beige p-8 rounded-lg border border-gray-200">
                <div className="flex items-center gap-4 mb-6">
-                 <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center text-green-600">
+                 <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center text-primary border border-gray-100">
                     <Store size={24} />
                  </div>
                  <div>
@@ -281,9 +260,9 @@ const Services: React.FC<ServicesProps> = ({ onOpenConsultation }) => {
                </div>
             </div>
 
-            <div className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
+            <div className="bg-beige p-8 rounded-lg border border-gray-200">
                <div className="flex items-center gap-4 mb-6">
-                 <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center text-blue-600">
+                 <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center text-primary border border-gray-100">
                     <ShieldCheck size={24} />
                  </div>
                  <div>
@@ -301,7 +280,7 @@ const Services: React.FC<ServicesProps> = ({ onOpenConsultation }) => {
       </section>
 
       {/* 7. Why Choose Us */}
-      <section className="py-24 bg-white">
+      <section className="py-24 bg-white border-t border-gray-100">
         <div className="container mx-auto px-6 text-center">
            <h2 className="text-3xl font-display font-bold text-navy-900 mb-12">Why Choose Our AI Services?</h2>
            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
@@ -312,7 +291,7 @@ const Services: React.FC<ServicesProps> = ({ onOpenConsultation }) => {
                 { icon: ShieldCheck, title: "Scalable & Secure", desc: "High security standards that grow with you." }
               ].map((item, i) => (
                 <div key={i} className="flex flex-col items-center">
-                   <div className="w-16 h-16 bg-gray-50 rounded-full flex items-center justify-center text-navy-900 mb-4">
+                   <div className="w-16 h-16 bg-beige rounded-full flex items-center justify-center text-navy-900 mb-4">
                       <item.icon size={28} />
                    </div>
                    <h4 className="font-bold text-navy-900 mb-2">{item.title}</h4>
@@ -324,13 +303,13 @@ const Services: React.FC<ServicesProps> = ({ onOpenConsultation }) => {
       </section>
 
       {/* 8. CTA Section */}
-      <section className="py-20 bg-gradient-to-br from-primary/10 to-orange-500/10">
+      <section className="py-20 bg-beige">
          <div className="container mx-auto px-6 text-center">
             <h2 className="text-4xl font-display font-bold text-navy-900 mb-4">Ready to Unlock the Power of AI?</h2>
             <p className="text-gray-600 mb-8 max-w-2xl mx-auto">Contact us today for a free consultation and AI-driven insights tailored to your business.</p>
             <button 
               onClick={onOpenConsultation}
-              className="px-10 py-4 bg-primary text-white font-bold rounded-full shadow-lg hover:bg-primary-hover hover:scale-105 transition-all flex items-center gap-2 mx-auto"
+              className="px-10 py-4 bg-primary text-white font-bold rounded-md shadow-lg hover:bg-primary-hover transition-all flex items-center gap-2 mx-auto"
             >
               <Rocket size={20} />
               Get Started
