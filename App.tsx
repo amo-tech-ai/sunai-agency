@@ -10,6 +10,12 @@ import WhatsApp from './pages/WhatsApp';
 import AIFeatures from './pages/AIFeatures';
 import About from './pages/About';
 import Contact from './pages/Contact';
+import DashboardOverview from './pages/dashboard/Overview';
+import Pipeline from './pages/dashboard/crm/Pipeline';
+import Leads from './pages/dashboard/crm/Leads';
+import Outreach from './pages/dashboard/crm/Outreach';
+import Scoring from './pages/dashboard/crm/Scoring';
+import Prospecting from './pages/dashboard/crm/Prospecting';
 import { PageName } from './types';
 
 const App = () => {
@@ -20,7 +26,23 @@ const App = () => {
   useEffect(() => {
     const handleHashChange = () => {
       const hash = window.location.hash.replace('#', '');
-      if (hash === 'services') {
+      
+      // Dashboard Routing
+      if (hash === 'dashboard') {
+        setCurrentPage('dashboard');
+      } else if (hash === 'dashboard/pipeline') {
+        setCurrentPage('dashboard-pipeline');
+      } else if (hash === 'dashboard/leads') {
+        setCurrentPage('dashboard-leads');
+      } else if (hash === 'dashboard/outreach') {
+        setCurrentPage('dashboard-outreach');
+      } else if (hash === 'dashboard/scoring') {
+        setCurrentPage('dashboard-scoring');
+      } else if (hash === 'dashboard/prospecting') {
+        setCurrentPage('dashboard-prospecting');
+      } 
+      // Public Site Routing
+      else if (hash === 'services') {
         setCurrentPage('services');
       } else if (hash === 'process') {
         setCurrentPage('process');
@@ -35,12 +57,12 @@ const App = () => {
       } else if (hash === 'contact') {
         setCurrentPage('contact');
       } else {
-        // If hash is a section on home (e.g., #results), stay on home but scroll
-        if (!['results', 'pricing'].includes(hash)) {
-             // Default to home if no known hash
-        }
+        // Default to home if no known hash
       }
     };
+
+    // Initial check
+    handleHashChange();
 
     window.addEventListener('hashchange', handleHashChange);
     return () => window.removeEventListener('hashchange', handleHashChange);
@@ -50,23 +72,47 @@ const App = () => {
     setCurrentPage(page);
     window.scrollTo({ top: 0, behavior: 'smooth' });
     
+    // Construct the URL hash based on page
+    let urlHash = '';
+    switch(page) {
+        case 'dashboard': urlHash = 'dashboard'; break;
+        case 'dashboard-pipeline': urlHash = 'dashboard/pipeline'; break;
+        case 'dashboard-leads': urlHash = 'dashboard/leads'; break;
+        case 'dashboard-outreach': urlHash = 'dashboard/outreach'; break;
+        case 'dashboard-scoring': urlHash = 'dashboard/scoring'; break;
+        case 'dashboard-prospecting': urlHash = 'dashboard/prospecting'; break;
+        case 'home': urlHash = ''; break; // or 'home'
+        default: urlHash = page;
+    }
+    
+    if (hash) {
+      // If a specific section hash is provided (e.g. #contact on home page)
+       // This logic might need adjustment depending on how you want to handle internal page jumps vs route changes
+    } else {
+       window.history.pushState(null, '', `#${urlHash}`);
+    }
+
     if (hash) {
       setTimeout(() => {
         const element = document.getElementById(hash);
         if (element) {
           element.scrollIntoView({ behavior: 'smooth' });
         }
-      }, 100); // Small delay to allow page render
+      }, 100); 
     }
   };
 
+  const isDashboard = currentPage.startsWith('dashboard');
+
   return (
     <div className="bg-gray-50 min-h-screen text-navy-900 font-sans selection:bg-primary/30 selection:text-navy-900">
-      <Navbar 
-        onNavigate={handleNavigate} 
-        onOpenBrief={() => setBriefOpen(true)}
-        currentPage={currentPage}
-      />
+      {!isDashboard && (
+        <Navbar 
+          onNavigate={handleNavigate} 
+          onOpenBrief={() => setBriefOpen(true)}
+          currentPage={currentPage}
+        />
+      )}
       
       <main>
         {currentPage === 'home' && <Home onOpenBrief={() => setBriefOpen(true)} onNavigate={handleNavigate} />}
@@ -77,9 +123,17 @@ const App = () => {
         {currentPage === 'ai-features' && <AIFeatures onOpenConsultation={() => setBriefOpen(true)} />}
         {currentPage === 'about' && <About onOpenConsultation={() => setBriefOpen(true)} />}
         {currentPage === 'contact' && <Contact />}
+        
+        {/* Dashboard Routes */}
+        {currentPage === 'dashboard' && <DashboardOverview onNavigate={handleNavigate} />}
+        {currentPage === 'dashboard-pipeline' && <Pipeline onNavigate={handleNavigate} />}
+        {currentPage === 'dashboard-leads' && <Leads onNavigate={handleNavigate} />}
+        {currentPage === 'dashboard-outreach' && <Outreach onNavigate={handleNavigate} />}
+        {currentPage === 'dashboard-scoring' && <Scoring onNavigate={handleNavigate} />}
+        {currentPage === 'dashboard-prospecting' && <Prospecting onNavigate={handleNavigate} />}
       </main>
 
-      <Footer onNavigate={handleNavigate} />
+      {!isDashboard && <Footer onNavigate={handleNavigate} />}
       <BriefGenerator isOpen={briefOpen} onClose={() => setBriefOpen(false)} />
     </div>
   );

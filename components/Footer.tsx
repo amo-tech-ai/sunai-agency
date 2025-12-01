@@ -37,6 +37,7 @@ const Footer: React.FC<NavigationProps> = ({ onNavigate }) => (
             <li><button onClick={() => onNavigate('whatsapp')} className="hover:text-primary transition-colors">WhatsApp Automation</button></li>
             <li><button onClick={() => onNavigate('projects')} className="hover:text-primary transition-colors">Projects</button></li>
             <li><button onClick={() => onNavigate('contact')} className="hover:text-primary transition-colors">Contact</button></li>
+            <li><button onClick={() => onNavigate('dashboard')} className="hover:text-primary transition-colors font-bold text-primary mt-2 flex items-center gap-1">Client Dashboard</button></li>
           </ul>
         </div>
 
