@@ -1,7 +1,7 @@
 import React from 'react';
 import { 
   Users, Target, TrendingUp, CheckSquare, 
-  Settings, Filter, Plus, Sparkles, Mail, Phone
+  Filter, Plus, Sparkles, Mail, Phone, Settings
 } from 'lucide-react';
 import { 
   AreaChart, Area, XAxis, YAxis, CartesianGrid, 
@@ -217,7 +217,7 @@ const DashboardOverview: React.FC<NavigationProps> = ({ onNavigate }) => {
                                   activity.sentiment === 'negative' ? 'bg-red-100 text-red-700' : 'bg-gray-100 text-gray-600'}`}>
                                 {activity.sentiment}
                               </span>
-                              <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-gray-100 text-gray-500 uppercase tracking-wider">
+                              <span className="text--[10px] font-bold px-2 py-0.5 rounded-full bg-gray-100 text-gray-500 uppercase tracking-wider">
                                 {activity.type}
                               </span>
                           </div>

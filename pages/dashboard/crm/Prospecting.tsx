@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import DashboardLayout from '../../../components/DashboardLayout';
 import { NavigationProps } from '../../../types';
-import { Briefcase, Sparkles, Filter, Save, Plus, BarChart3 } from 'lucide-react';
+import { Briefcase, Sparkles, Filter, Save, Plus, BarChart3, Target as TargetIcon } from 'lucide-react';
 
 const GENERATED_LEADS = [
   { id: 1, name: 'Sarah Connor', company: 'Skynet Cyber', score: 98, industry: 'Tech', match: 'High' },
@@ -85,7 +85,7 @@ const Prospecting: React.FC<NavigationProps> = ({ onNavigate }) => {
                         <div className="text-xs font-bold text-gray-500 uppercase">Avg Match Score</div>
                         <div className="text-2xl font-bold text-navy-900">93%</div>
                      </div>
-                     <Target className="text-green-600" size={24} />
+                     <TargetIcon className="text-green-600" size={24} />
                   </div>
                </div>
 
@@ -131,16 +131,5 @@ const Prospecting: React.FC<NavigationProps> = ({ onNavigate }) => {
     </DashboardLayout>
   );
 };
-
-// Quick helper icon for the metric
-function Target({ className, size }: { className?: string, size?: number }) {
-    return (
-        <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
-            <circle cx="12" cy="12" r="10"></circle>
-            <circle cx="12" cy="12" r="6"></circle>
-            <circle cx="12" cy="12" r="2"></circle>
-        </svg>
-    )
-}
 
 export default Prospecting;

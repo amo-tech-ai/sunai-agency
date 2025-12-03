@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { 
   LayoutDashboard, Users, GitCommit, Target, Zap, 
-  PieChart, Calendar, Settings, Search, Bell, 
+  Calendar, Settings, Search, Bell, 
   Menu, Briefcase, TrendingUp, Sparkles, X, LogOut
 } from 'lucide-react';
 import { PageName } from '../types';
@@ -15,7 +15,7 @@ interface DashboardLayoutProps {
 const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children, activePage, onNavigate }) => {
   const [sidebarOpen, setSidebarOpen] = useState(true);
 
-  const NavItem = ({ page, icon: Icon, label, hash }: { page: PageName; icon: any; label: string, hash?: string }) => {
+  const NavItem = ({ page, icon: Icon, label, hash }: { page: PageName; icon: React.ElementType; label: string, hash?: string }) => {
     const isActive = activePage === page;
     return (
       <button 

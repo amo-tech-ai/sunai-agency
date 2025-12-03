@@ -57,7 +57,8 @@ const App = () => {
       } else if (hash === 'contact') {
         setCurrentPage('contact');
       } else {
-        // Default to home if no known hash
+        // Default to home if no known hash or empty
+        if (hash === '') setCurrentPage('home');
       }
     };
 
@@ -81,24 +82,14 @@ const App = () => {
         case 'dashboard-outreach': urlHash = 'dashboard/outreach'; break;
         case 'dashboard-scoring': urlHash = 'dashboard/scoring'; break;
         case 'dashboard-prospecting': urlHash = 'dashboard/prospecting'; break;
-        case 'home': urlHash = ''; break; // or 'home'
+        case 'home': urlHash = ''; break;
         default: urlHash = page;
     }
     
     if (hash) {
-      // If a specific section hash is provided (e.g. #contact on home page)
-       // This logic might need adjustment depending on how you want to handle internal page jumps vs route changes
+       // logic for hash scrolling if needed in future
     } else {
        window.history.pushState(null, '', `#${urlHash}`);
-    }
-
-    if (hash) {
-      setTimeout(() => {
-        const element = document.getElementById(hash);
-        if (element) {
-          element.scrollIntoView({ behavior: 'smooth' });
-        }
-      }, 100); 
     }
   };
 

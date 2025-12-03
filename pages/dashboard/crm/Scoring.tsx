@@ -2,7 +2,7 @@ import React from 'react';
 import DashboardLayout from '../../../components/DashboardLayout';
 import { NavigationProps } from '../../../types';
 import { Target, TrendingUp, Save, Eye, AlertTriangle } from 'lucide-react';
-import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, ScatterChart, Scatter, ZAxis, CartesianGrid } from 'recharts';
+import { ScatterChart, Scatter, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid } from 'recharts';
 
 const PROSPECTS = [
   { id: 1, name: 'Acme Corp', fit: 92, intent: 88, risk: 10, total: 90, status: 'Hot' },
